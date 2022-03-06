@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import ENV from './../env';
+import { Item } from './../../types/resolvers-types';
 
 const resolvers = {
     Query: {
@@ -19,7 +20,7 @@ const resolvers = {
          */
         items: async (parent: any, args: { bizCd: string }, context: { authScope: string }, info: any) => {
             const response = await fetch(`${ENV.REST_ENDPOINT}/items`, { method: 'POST' });
-            const data = await response.json();
+            const data: Item[] = await response.json();
             return data;
         },
     },

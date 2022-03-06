@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/app.ts",
+    "generate": "graphql-codegen",
     "build": "tsc -p . && copyfiles -f ./src/schema/*.graphql ./build/schema",
     "start": "node build/app.js"
   },
@@ -21,6 +22,9 @@
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.5",
+    "@graphql-codegen/typescript-resolvers": "^2.5.2",
     "@types/node-fetch": "^2.6.1",
     "copyfiles": "^2.4.1",
     "nodemon": "^2.0.15",

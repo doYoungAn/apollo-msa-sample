@@ -1,5 +1,4 @@
-import fetch from 'node-fetch';
-import ENV from './../env';
+import { Customer } from './../../types/resolvers-types';
 
 const resolvers = {
     Mutation: {
@@ -17,13 +16,14 @@ const resolvers = {
          * @returns 
          */
          updateCustomer: async (parent: any, args: { bizCd: string }, context: { authScope: string }, info: any) => {
-            return [
+            const results: Customer[] = [
                 {
                     customerCode: 123,
                     customerName: '123',
                     ownerContact: ['000', '0000', '0000']
                 }
-            ]
+            ];
+            return results;
         },
     },
 }

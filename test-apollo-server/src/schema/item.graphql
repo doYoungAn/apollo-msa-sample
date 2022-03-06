@@ -3,9 +3,9 @@ type Query {
 }
 
 type Item {
-  displayItemCode: String
-  itemName: String
-  itemQuantity: Int
+  displayItemCode: String!
+  itemName: String!
+  itemQuantity: Int!
 }
 
 type Mutation {
