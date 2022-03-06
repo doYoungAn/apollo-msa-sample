@@ -1,0 +1,9 @@
+type Query {
+  items(bizCd: String): [Item!]!
+}
+
+type Item {
+  displayItemCode: String
+  itemName: String
+  itemQuantity: Int
+}

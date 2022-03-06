@@ -1,18 +1,14 @@
 import { ApolloServer, gql } from 'apollo-server';
+import { addResolversToSchema } from '@graphql-tools/schema';
 import fetch from 'node-fetch';
+import schema from './schema';
 
-const typeDefs = gql`
-  type Query {
-    items(bizCd: String): [Item!]!
-  }
-  type Item {
-    displayItemCode: String
-    itemName: String
-    itemQuantity: Int
-  }
-`;
-
-const resolvers = {
+/**
+ * @link https://www.graphql-tools.com/docs/schema-loading
+ */
+const schemaWithResolvers = addResolversToSchema({
+  schema,
+  resolvers: {
     Query: {
       items: async () => {
         const response = await fetch('http://localhost:8000/api/items', { method: 'POST' });
@@ -20,10 +16,10 @@ const resolvers = {
         return data;
       },
     },
-  };
+  }
+})
 
-
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ schema: schemaWithResolvers });
 
 server.listen({ port: 4001 }).then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
