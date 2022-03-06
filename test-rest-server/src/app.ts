@@ -1,13 +1,17 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 
 const app = express();
+app.use(bodyParser());
 
-app.post('/item', (req, res, next) => {
-    res.send({
-        displayItemCode: '',
-        itemName: '',
-        itemQuantity: 10,
-    })
+app.post('/api/items', (req, res, next) => {
+    res.send([
+        {
+            displayItemCode: '',
+            itemName: '',
+            itemQuantity: 10,
+        }
+    ])
 })
 
 app.listen(8000, () => {

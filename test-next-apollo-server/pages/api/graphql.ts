@@ -1,18 +1,23 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
+import fetch from 'node-fetch';
 
 const typeDefs = gql`
   type Query {
-    users: [User!]!
+    items(bizCd: String): [Item!]!
   }
-  type User {
-    name: String
+  type Item {
+    displayItemCode: String
+    itemName: String
+    itemQuantity: Int
   }
 `
 
 const resolvers = {
   Query: {
-    users(parent, args, context) {
-      return [{ name: 'Nextjs' }]
+    items: async (parent, args, context) => {
+      const response = await fetch('http://localhost:8000/api/items', { method: 'POST' });
+      const data = await response.json();
+      return data;
     },
   },
 }
