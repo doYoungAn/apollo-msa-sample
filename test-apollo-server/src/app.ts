@@ -13,7 +13,7 @@ import resolvers from './resolvers';
 const schemaWithResolvers = addResolversToSchema({
   schema,
   resolvers,
-})
+});
 
 /**
  * * 아폴로 서버를 생성한다.
