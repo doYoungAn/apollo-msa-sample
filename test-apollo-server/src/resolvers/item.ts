@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import ENV from './../env';
 
 const resolvers = {
     Query: {
@@ -9,8 +10,8 @@ const resolvers = {
          * @link https://www.apollographql.com/docs/apollo-server/data/resolvers/#resolver-arguments
          * @returns 
          */
-        items: async (parent, args, context, info) => {
-            const response = await fetch('http://localhost:8000/api/items', { method: 'POST' });
+        items: async (parent: any, args: any, context: any, info: any) => {
+            const response = await fetch(`${ENV.REST_ENDPOINT}/items`, { method: 'POST' });
             const data = await response.json();
             return data;
         },
