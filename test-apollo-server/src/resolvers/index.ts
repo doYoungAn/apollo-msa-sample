@@ -1,5 +1,6 @@
 import { mergeResolvers } from '@graphql-tools/merge';
 import ItemResolvers from './item';
+import CustomerResolvers from './customer';
 
 /**
  * * 각기 다른 리졸버를 가져와 병합한다.
@@ -7,6 +8,7 @@ import ItemResolvers from './item';
  */
 const resolvers = mergeResolvers([
     ItemResolvers,
+    CustomerResolvers,
 ])
 
 export default resolvers;

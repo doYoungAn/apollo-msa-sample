@@ -7,3 +7,13 @@ type Item {
   itemName: String
   itemQuantity: Int
 }
+
+type Mutation {
+  updateCustomer(customerCode: Int): [Customer!]!
+}
+
+type Customer {
+  customerCode: Int
+  customerName: String
+  ownerContact: [String]
+}
